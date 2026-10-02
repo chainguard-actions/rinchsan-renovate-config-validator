@@ -1,0 +1,25 @@
+name: Test basic valid renovate config
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Copy valid renovate config fixture into workspace as a non-renovate-json name
+        run: |
+          # The action checks file.includes('renovate.json') to decide whether to copy.
+          # A filename like 'test-renovate.json' contains 'renovate.json' as a substring,
+          # so the action skips the copy and validates the action's own renovate.json instead.
+          # Use a name that does NOT contain 'renovate.json' as a substring.
+          cp "$GITHUB_WORKSPACE/tests/fixtures/valid-renovate.json" "$GITHUB_WORKSPACE/valid-config.json"
+
+      - id: action
+        uses: .
+        with:
+          pattern: 'valid-config.json'
+
+      - name: Assert action succeeded with valid config
+        run: |
+          echo "PASS: action completed successfully with a valid renovate config"

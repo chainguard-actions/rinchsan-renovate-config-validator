@@ -1,0 +1,23 @@
+name: Test custom pattern for renovate config validation
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Copy valid renovate config fixture with a custom name
+        run: |
+          # Use a name that does NOT contain 'renovate.json' as a substring,
+          # so the action correctly copies it to renovate.json before validating.
+          cp "$GITHUB_WORKSPACE/tests/fixtures/my-renovate-config.json" "$GITHUB_WORKSPACE/custom-config.json"
+
+      - id: action
+        uses: .
+        with:
+          pattern: 'custom-config.json'
+
+      - name: Assert action succeeded with custom pattern
+        run: |
+          echo "PASS: action completed successfully with custom pattern"

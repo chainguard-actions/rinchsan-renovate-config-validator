@@ -1,1 +1,37 @@
-# rinchsan-renovate-config-validator
+# renovate-config-validator
+
+![](https://github.com/rinchsan/renovate-config-validator/workflows/CI/badge.svg)
+![](https://img.shields.io/github/release/rinchsan/renovate-config-validator.svg?colorB=7E7E7E)
+[![](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
+:white_check_mark: Validate Renovate config in GitHub Actions
+
+## Example
+
+```yaml
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate
+        uses: rinchsan/renovate-config-validator@main
+        with:
+          pattern: '*.json' # Regular expression for filename to validate, default to *.json
+```
+
+## Privacy
+
+This Action contacts Chainguard's licensing server to verify authorization. Connection metadata (IP address, GitHub repository identifier, timestamp, and any metadata encoded in the auth token) is transmitted to Chainguard, Inc. even if authorization is denied in accordance with our [Privacy Notice](https://www.chainguard.dev/legal/privacy-notice)

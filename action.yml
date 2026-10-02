@@ -1,0 +1,16 @@
+name: 'renovate-config-validator'
+description: 'Validate Renovate config in GitHub Actions'
+inputs:
+  pattern:
+    description: 'Regular expression for filename to validate, default to *.json'
+    required: false
+    default: '*.json'
+
+runs:
+  pre: chainguard-phonehome.js
+  using: 'node24'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'check-circle'
+  color: 'green'
