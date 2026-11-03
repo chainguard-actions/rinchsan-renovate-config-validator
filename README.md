@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v0.2.1 | [`v0.2.1`](https://github.com/chainguard-actions/rinchsan-renovate-config-validator/tree/v0.2.1) | [`8cf44ae`](https://github.com/rinchsan/renovate-config-validator/commit/8cf44ae5646f111f838a03ac7ebd4e1c1f9be983) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v0.2.1 | [`v0.2.1`](https://github.com/chainguard-actions/rinchsan-renovate-config-validator/tree/v0.2.1) | [`8cf44ae`](https://github.com/rinchsan/renovate-config-validator/commit/8cf44ae5646f111f838a03ac7ebd4e1c1f9be983) | [`HARDENING.md`](https://github.com/chainguard-actions/rinchsan-renovate-config-validator/blob/v0.2.1/HARDENING.md) |
 
 ## Privacy
 
